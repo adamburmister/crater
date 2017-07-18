@@ -19,6 +19,6 @@ defmodule Crater.Snippet do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:title, :body, :description])
-    |> validate_required([:title, :body, :description])
+    |> validate_required([:title, :body])
   end
 end
