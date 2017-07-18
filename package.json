@@ -7,7 +7,10 @@
     "lib": "lib",
     "test": "test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "phoenix": "file:deps/phoenix",
+    "phoenix_html": "file:deps/phoenix_html"
+  },
   "devDependencies": {
     "cz-blvd": "^0.1.0"
   },
