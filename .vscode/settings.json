@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "files.insertFinalNewline": true,
+  "editor.rulers": [
+    140
+  ]
+}
