@@ -10,7 +10,7 @@ module.exports = {
     path.join(__dirname, 'web/static/scss/app.scss')
   ],
   output: {
-    path: path.join(__dirname, '/priv/static'),
+    path: path.join(__dirname, '/priv/static/dist'),
     filename: 'js/app.bundle.js'
   },
   module: {
