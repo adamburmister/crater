@@ -2,6 +2,18 @@ const path = require('path')
 const webpack = require('webpack')
 const { CheckerPlugin } = require('awesome-typescript-loader')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+
+const env = process.env.MIX_ENV === 'prod' ? 'production' : 'development'
+
+const plugins = {
+  production: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {warnings: false}
+    })
+  ],
+  development: []
+}
 
 module.exports = {
   devtool: 'source-map',
@@ -25,7 +37,11 @@ module.exports = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: [
+            { loader: 'css-loader', options: { importLoaders: 1 } },
+            'postcss-loader',
+            'sass-loader'
+          ]
         })
       },
       {
@@ -36,10 +52,20 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin([
+      path.join(__dirname, 'priv/static/js'),
+      path.join(__dirname, 'priv/static/css')
+    ]),
+    // Important to keep React file size down
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(env),
+      },
+    }),
     new CheckerPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new ExtractTextPlugin('css/app.css')
-  ],
+  ].concat(plugins[env]),
   resolve: {
     modules: [
       'node_modules',

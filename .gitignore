@@ -21,6 +21,10 @@ erl_crash.dump
 # We're yarn! So don't, like, use the npm lockfile!
 /package-lock.json
 
+# We don't need to commit bundled assets as well.
+/priv/static/css
+/priv/static/js
+
 # Hey I just wanted to take this moment to say, at the bottom of this gitignore,
 # be nice to someone today. It doesn't matter who, but you gotta be nice to
 # someone, and like actually nice, not passive aggressively nice. You gotta do
