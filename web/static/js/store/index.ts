@@ -1,3 +1,7 @@
-export interface ApplicationState {}
+import { combineReducers } from 'redux'
 
-export const reducers = {}
+export interface ApplicationState {
+  routing: any
+}
+
+export const reducers = combineReducers({})
