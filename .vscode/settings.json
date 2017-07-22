@@ -5,5 +5,11 @@
   "files.insertFinalNewline": true,
   "editor.rulers": [
     140
-  ]
+  ],
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/deps": true,
+    "**/_build": true,
+    "**/priv/static": true
+  }
 }
