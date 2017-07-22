@@ -1,20 +1,30 @@
 import { Reducer } from 'redux'
-import { ActionWithType } from '../../utils'
+import { FilterChangedAction, SnippetsFetchedAction } from './actionTypes'
 
 export interface SnippetState {
+  filter: string
+  snippets: Snippet[]
+}
+
+interface Snippet {
   rawText: string
   language: string
   description?: string
 }
 
-type KnownAction = ActionWithType
+// Declare a 'discriminated union' type. This guarantees that all references to
+// 'type' properties contain one of the declared type strings (and not any
+// other arbitrary string).
+type KnownAction = FilterChangedAction | SnippetsFetchedAction
 
-export const reducer: Reducer<SnippetState> = (state: SnippetState, action: ActionWithType) => {
+const initialState = { filter: '', snippets: [] }
+
+export const reducer: Reducer<SnippetState> = (state: SnippetState = initialState, action: KnownAction) => {
   switch (action.type) {
     default:
       // For unrecognized actions (or in cases where actions have no effect), must return the existing state
       // (or default initial state if none was supplied)
-      return state || { rawText: '', language: 'js' }
+      return state
   }
 }
 
