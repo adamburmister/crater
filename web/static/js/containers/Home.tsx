@@ -1,17 +1,35 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Row, Col } from 'reactstrap'
+import AceEditor from 'react-ace'
+
+import { ApplicationState }  from '../store'
+import { actionCreators }  from '../store/snippet/actions'
+
+import 'brace/mode/javascript'
+import 'brace/theme/chrome'
+
+// TODO: Consider looking into Monaco Editor? Ace is good but both have their
+// own advantages. <https://microsoft.github.io/monaco-editor/>
 
 export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <div className="jumbotron">
-          <h2>Welcome to Phoenix!</h2>
-          <p className="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
-        </div>
+        <h1>This is Crater.</h1>
+        <p className="lead">Write your code snippet below.</p>
 
-        <div className="row marketing">
-          <div className="col-lg-6">
+        <AceEditor
+          name="snippetEditor"
+          mode="javascript"
+          theme="chrome"
+          width="100%"
+          editorProps={{$blockScrolling: true}}
+        />
+
+        <Row className="marketing">
+          <Col lg="6">
             <h4>Resources</h4>
             <ul>
               <li>
@@ -24,9 +42,9 @@ export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
                 <a href="https://github.com/phoenixframework/phoenix">Source</a>
               </li>
             </ul>
-          </div>
+          </Col>
 
-          <div className="col-lg-6">
+          <Col lg="6">
             <h4>Help</h4>
             <ul>
               <li>
@@ -39,9 +57,11 @@ export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
                 <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
               </li>
             </ul>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </div>
     )
   }
 }
+
+// export default connect((state: ApplicationState) => state.snippets, actionCreators)(Home) as typeof Home

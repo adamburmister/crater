@@ -15,7 +15,7 @@ export default class Header extends React.Component<{}, HeaderState> {
     super(props)
   }
 
-  render() {
+  public render(): JSX.Element {
     return (
       <div>
         <Navbar color="faded" light toggleable>

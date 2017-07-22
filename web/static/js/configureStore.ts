@@ -8,9 +8,13 @@ import { History } from 'history'
 export default function configureStore(history: History, initialState?: ApplicationState): Store<any> {
   // Build middleware. These are functions that can process the actions before they reach the store.
   const windowIfDefined = typeof window === 'undefined' ? null : window as any
-  // If devTools is installed, connect to it
+
+  // If developer tools are installed, connect to it
+  // TODO: Is this safe? Probably include a check involving `process.env.MIX_ENV`
+  // so we won't accidentally include devtools in the production build
   const devToolsExtension = windowIfDefined && windowIfDefined.devToolsExtension as () => GenericStoreEnhancer
   const reduxDevTools = windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__ && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__() as any
+
   const createStoreWithMiddleware = compose(
     applyMiddleware(thunk, routerMiddleware(history)),
     devToolsExtension ? devToolsExtension() : f => f
