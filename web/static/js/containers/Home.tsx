@@ -1,10 +1,6 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { Row, Col } from 'reactstrap'
-
-import { ApplicationState }  from '../store'
-import { actionCreators }  from '../store/snippet/actions'
 
 // TODO: Consider looking into Monaco Editor? Ace is good but both have their
 // own advantages. <https://microsoft.github.io/monaco-editor/>
@@ -51,5 +47,3 @@ export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
     )
   }
 }
-
-// export default connect((state: ApplicationState) => state.snippets, actionCreators)(Home) as typeof Home

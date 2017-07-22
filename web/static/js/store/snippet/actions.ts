@@ -1,5 +1,7 @@
-import { FilterChangedAction, SnippetsFetchedAction } from './actionTypes'
+import { FilterChangedAction, /* SnippetsFetchedAction */ } from './actionTypes'
 
 export const actionCreators = {
-  changeFilter: (newFilter) => <FilterChangedAction>{ type: 'snippet.FILTER_CHANGED', filter: newFilter }
+  changeFilter: (newFilter) => {
+    return { type: 'snippet.FILTER_CHANGED', filter: newFilter } as FilterChangedAction
+  }
 }

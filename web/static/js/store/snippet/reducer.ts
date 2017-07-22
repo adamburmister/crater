@@ -27,5 +27,3 @@ export const reducer: Reducer<SnippetState> = (state: SnippetState = initialStat
       return state
   }
 }
-
-export default reducer

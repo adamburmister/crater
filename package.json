@@ -59,7 +59,7 @@
   },
   "scripts": {
     "build": "webpack --colors",
-    "lint": "tslint web/static/js/**/*",
+    "lint": "tslint --project tsconfig.json --type-check web/static/js/**/*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

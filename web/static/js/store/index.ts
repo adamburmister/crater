@@ -7,4 +7,6 @@ export interface ApplicationState {
   snippet: Snippet.SnippetState
 }
 
-export const reducers = combineReducers({})
+export const reducers = combineReducers({
+  snippet: Snippet.reducer
+})

@@ -13,11 +13,10 @@ export default function configureStore(history: History, initialState?: Applicat
   // TODO: Is this safe? Probably include a check involving `process.env.MIX_ENV`
   // so we won't accidentally include devtools in the production build
   const devToolsExtension = windowIfDefined && windowIfDefined.devToolsExtension as () => GenericStoreEnhancer
-  const reduxDevTools = windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__ && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__() as any
 
   const createStoreWithMiddleware = compose(
     applyMiddleware(thunk, routerMiddleware(history)),
-    devToolsExtension ? devToolsExtension() : f => f
+    devToolsExtension ? devToolsExtension() : (f) => f
   )(createStore)
 
   // Combine all reducers and instantiate the app-wide store instance
