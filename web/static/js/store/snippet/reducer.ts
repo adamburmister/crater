@@ -2,9 +2,9 @@ import { Reducer } from 'redux'
 import { ActionWithType } from '../../utils'
 
 export interface SnippetState {
-  rawText: string;
-  language: string;
-  description?: string;
+  rawText: string
+  language: string
+  description?: string
 }
 
 type KnownAction = ActionWithType

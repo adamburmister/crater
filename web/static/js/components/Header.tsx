@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from 'react'
 import {
   Container,
   Navbar,
   NavbarBrand
-} from 'reactstrap';
+} from 'reactstrap'
 
 interface HeaderState {
   // Is the header expanded or collapsed?

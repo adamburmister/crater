@@ -75,7 +75,7 @@
       "jsx-double"
     ],
     "radix": true,
-    "semicolon": [false],
+    "semicolon": [true, "never"],
     "switch-default": true,
     "trailing-comma": [false],
     "triple-equals": [

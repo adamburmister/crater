@@ -29,7 +29,7 @@ function renderApp(): void {
   )
 }
 
-renderApp();
+renderApp()
 
 // Allow Hot Module Replacement
 if (module.hot) {
