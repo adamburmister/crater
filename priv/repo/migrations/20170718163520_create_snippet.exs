@@ -10,6 +10,7 @@ defmodule Crater.Repo.Migrations.CreateSnippet do
       timestamps()
 
       add :title, :string
+      add :language, :string
       add :body, :text
       add :description, :text
     end

@@ -7,6 +7,7 @@ defmodule Crater.Snippet do
 
   schema "snippets" do
     field :title, :string
+    field :language, :string
     field :body, :string
     field :description, :string
 
@@ -18,7 +19,7 @@ defmodule Crater.Snippet do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :body, :description])
-    |> validate_required([:title, :body])
+    |> cast(params, [:title, :language, :body, :description])
+    |> validate_required([:title, :language, :body])
   end
 end
