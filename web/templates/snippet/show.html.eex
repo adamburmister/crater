@@ -1,25 +1,45 @@
-<h2>Show snippet</h2>
+<!--<%= ReactPhoenix.ClientSide.react_component("Components.Header") %>-->
+<nav class="navbar navbar-toggleable navbar-light bg-faded"><div class="container"><a href="/" class="navbar-brand">🚀 crater</a></div></nav>
 
-<ul>
+<style type="text/css" media="screen">
+  .ace-wrapper {
+    position: relative;
+    max-width: 100%;
+    min-height: 600px;
+  }
+  #editor {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+</style>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @snippet.title %>
-  </li>
+<div class="container mt-4">
+  <main role="main">
+    <h2><%= @snippet.title %></h2>
 
-  <li>
-    <strong>Body:</strong>
-    <pre>
-    <%= @snippet.body %>
-    </pre>
-  </li>
+    <div class="ace-wrapper my-3">
+      <div id="editor"><%= @snippet.body %></div>
+    </div>
 
-  <li>
-    <strong>Description:</strong>
-    <%= @snippet.description %>
-  </li>
+    <div class="description my-3">
+      <%= @snippet.description %>
+    </div>
 
-</ul>
+    <div class="actions my-3">
+      <%= link "Edit", to: snippet_path(@conn, :edit, @snippet) %>
+      <%= link "Back", to: snippet_path(@conn, :index) %>
+    </div>
+  </main>
+</div>
 
-<%= link "Edit", to: snippet_path(@conn, :edit, @snippet) %>
-<%= link "Back", to: snippet_path(@conn, :index) %>
+<!-- TODO: ...Yeah, I know. -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"></script>
+<script>
+  var editor = ace.edit('editor')
+  editor.setTheme('ace/theme/chrome')
+  editor.getSession().setMode('ace/mode/<%= @snippet.language %>')
+</script>

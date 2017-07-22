@@ -7,6 +7,17 @@ import { createBrowserHistory } from 'history'
 import configureStore from './configureStore'
 import { ApplicationState } from './store'
 import * as RoutesModule from './routes'
+
+// TODO: This is some *really* weird stuff that react_phoenix does.
+// This doesn't even work because `react_phoenix` doesn't play well with
+// Webpack. We should remove this when we figure stuff out.
+import 'react-phoenix'
+import Header from './components/Header'
+
+interface BrowserWindow extends Window {
+  Components: any
+}
+
 let routes = RoutesModule.routes
 
 // Create browser history to use in the Redux store
@@ -29,7 +40,8 @@ function renderApp(): void {
   )
 }
 
-renderApp()
+// Temporary workaround for the non-React pages
+if (document.getElementById('react-app')) renderApp()
 
 // Allow Hot Module Replacement
 if (module.hot) {
@@ -39,3 +51,7 @@ if (module.hot) {
     renderApp()
   })
 }
+
+// TODO: Required by react-phoenix. Remove when we won't need it later.
+// tslint:disable-next-line
+;(window as BrowserWindow).Components = { Header }

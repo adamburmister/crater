@@ -2,13 +2,9 @@ import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Row, Col } from 'reactstrap'
-import AceEditor from 'react-ace'
 
 import { ApplicationState }  from '../store'
 import { actionCreators }  from '../store/snippet/actions'
-
-import 'brace/mode/javascript'
-import 'brace/theme/chrome'
 
 // TODO: Consider looking into Monaco Editor? Ace is good but both have their
 // own advantages. <https://microsoft.github.io/monaco-editor/>
@@ -18,15 +14,7 @@ export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
     return (
       <div>
         <h1>This is Crater.</h1>
-        <p className="lead">Write your code snippet below.</p>
-
-        <AceEditor
-          name="snippetEditor"
-          mode="javascript"
-          theme="chrome"
-          width="100%"
-          editorProps={{$blockScrolling: true}}
-        />
+        <p className="lead"><a href="/snippets">Snippets</a></p>
 
         <Row className="marketing">
           <Col lg="6">

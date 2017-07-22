@@ -1,28 +1,38 @@
-<h2>Listing snippets</h2>
+<!--<%= ReactPhoenix.ClientSide.react_component("Components.Header") %>-->
+<nav class="navbar navbar-toggleable navbar-light bg-faded"><div class="container"><a href="/" class="navbar-brand">🚀 crater</a></div></nav>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
+<!-- TODO: The following index view is just based on the default Phoenix views.
+  We should probably wireframe out a better template for this. -->
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for snippet <- @snippets do %>
-    <tr>
-      <td><%= snippet.title %></td>
-      <td><%= snippet.description %></td>
+<div class="container mt-4">
+  <main role="main">
+    <h2>Listing snippets</h2>
 
-      <td class="text-right">
-        <%= link "Show", to: snippet_path(@conn, :show, snippet), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: snippet_path(@conn, :edit, snippet), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: snippet_path(@conn, :delete, snippet), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
 
-<%= link "New snippet", to: snippet_path(@conn, :new) %>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+    <%= for snippet <- @snippets do %>
+        <tr>
+          <td><%= snippet.title %></td>
+          <td><%= snippet.description %></td>
+
+          <td class="text-right">
+            <%= link "Show", to: snippet_path(@conn, :show, snippet), class: "btn btn-secondary btn-sm" %>
+            <%= link "Edit", to: snippet_path(@conn, :edit, snippet), class: "btn btn-secondary btn-sm" %>
+            <%= link "Delete", to: snippet_path(@conn, :delete, snippet), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+    <% end %>
+      </tbody>
+    </table>
+
+    <%= link "New snippet", to: snippet_path(@conn, :new) %>
+  </main>
+</div>
