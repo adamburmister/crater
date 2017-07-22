@@ -1,27 +1,17 @@
-import * as React from 'react';
+import * as React from 'react'
+import Header from './components/Header'
 
 export class Root extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <div className="container">
-        <header className="header">
-          <div className="row">
-            <div className="col-md-12">
-              <span className="logo"></span>
-            </div>
-            <div className="col-md-12">
-              <nav role="navigation">
-                <ul className="nav nav-pills mt-0 mb-3">
-                  <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </header>
+      <div>
+        <Header />
 
-        <main role="main">
-          {this.props.children}
-        </main>
+        <div className="container content mt-4">
+          <main role="main">
+            {this.props.children}
+          </main>
+        </div>
 
       </div>
     )
