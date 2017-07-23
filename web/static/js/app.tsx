@@ -30,7 +30,6 @@ function renderApp(): void {
   )
 }
 
-// Temporary workaround for the non-React pages
 renderApp()
 
 // Allow Hot Module Replacement

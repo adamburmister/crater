@@ -16,7 +16,7 @@ defmodule Crater.Router do
   scope "/", Crater do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/*path", PageController, :index
     resources "/snippets", SnippetController
   end
 

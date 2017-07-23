@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Container } from 'reactstrap'
-import Header from './components/Header'
+import Header from '../components/Header'
 
-export default class Root extends React.Component<{}, {}> {
+export default class AppContainer extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>

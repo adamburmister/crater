@@ -22,6 +22,14 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# Configuration for std_json_io
+# Note: we need to run the react-stdio script directly for it to
+# work properly on Windows
+config :std_json_io,
+  pool_size: 5,
+  pool_max_overflow: 10,
+  script: "node ./node_modules/react-stdio/server.js"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
