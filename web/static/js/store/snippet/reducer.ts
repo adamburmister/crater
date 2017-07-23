@@ -6,8 +6,10 @@ export interface SnippetState {
   snippets: Snippet[]
 }
 
-interface Snippet {
-  rawText: string
+export interface Snippet {
+  id: string
+  body: string
+  title: string
   language: string
   description?: string
 }
@@ -19,8 +21,10 @@ type KnownAction = FilterChangedAction | SnippetsFetchedAction
 
 const initialState = { filter: '', snippets: [] }
 
-const reducer: Reducer<SnippetState> = (state: SnippetState = initialState, action: KnownAction) => {
+export default function reducer(state: SnippetState = initialState, action: KnownAction) {
   switch (action.type) {
+    case 'snippet.SNIPPETS_FETCHED':
+      return { ...state, snippets: action.snippets }
     default:
       // For unrecognized actions (or in cases where actions have no effect), must return the existing state
       // (or default initial state if none was supplied)
@@ -28,4 +32,12 @@ const reducer: Reducer<SnippetState> = (state: SnippetState = initialState, acti
   }
 }
 
-export default reducer
+export function getSnippets(state) {
+  const { snippet } = state
+  return (snippet as SnippetState).snippets
+}
+
+export function getCurrentFilter(state) {
+  const { snippet } = state
+  return (snippet as SnippetState).filter
+}

@@ -1,11 +1,20 @@
 import * as React from 'react'
+import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
 import { Row, Col } from 'reactstrap'
+
+import { ApplicationState } from '../store'
+import { fetchSnippets } from '../store/snippet/actions'
+import { SnippetState } from '../store/snippet/reducer'
 
 // TODO: Consider looking into Monaco Editor? Ace is good but both have their
 // own advantages. <https://microsoft.github.io/monaco-editor/>
 
 export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
+  constructor(props) {
+    super(props)
+  }
+
   public render(): JSX.Element {
     return (
       <div>
