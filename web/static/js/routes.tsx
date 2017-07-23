@@ -5,7 +5,7 @@ import Home from './containers/Home'
 import Snippets from './containers/Snippets'
 
 export const routes = (
-  <Root>
+  <Root {...this.props}>
     <Route exact path="/" component={ Home } />
     <Route path="/snippets-react" component={ Snippets } />
   </Root>

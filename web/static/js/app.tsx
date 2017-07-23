@@ -3,4 +3,4 @@ import * as ReactDOM from 'react-dom'
 
 import Root from './Root'
 
-ReactDOM.render(<Root />, document.getElementById('react-app'))
+ReactDOM.render(<Root {...this.props} />, document.getElementById('react-app'))
