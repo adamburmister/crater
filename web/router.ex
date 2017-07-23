@@ -16,8 +16,13 @@ defmodule Crater.Router do
   scope "/", Crater do
     pipe_through :browser # Use the default browser stack
 
-    get "/*path", PageController, :index
-    resources "/snippets", SnippetController
+    # Note that you have to set the same routes in React again. Why? If I set
+    # everything in this scope as `/*path`, for some reason it overrides the
+    # API routes as well, even it's EXPLICITLY set on a separate scope.
+    #
+    # I don't even know whether to blame React or Phoenix. Idk. I need to eat.
+    get "/", PageController, :index
+    get "/snippets/*path", PageController, :index
   end
 
   # Other scopes may use custom stacks.
