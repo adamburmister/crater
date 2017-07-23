@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 
-import * as Snippet from './snippet/reducer'
+import snippet, { SnippetState } from './snippet/reducer'
 
 export interface ApplicationState {
   routing: any,
-  snippet: Snippet.SnippetState
+  snippet: SnippetState
 }
 
 export const reducers = combineReducers({
-  snippet: Snippet.reducer
+  snippet
 })

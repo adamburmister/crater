@@ -19,7 +19,7 @@ type KnownAction = FilterChangedAction | SnippetsFetchedAction
 
 const initialState = { filter: '', snippets: [] }
 
-export const reducer: Reducer<SnippetState> = (state: SnippetState = initialState, action: KnownAction) => {
+const reducer: Reducer<SnippetState> = (state: SnippetState = initialState, action: KnownAction) => {
   switch (action.type) {
     default:
       // For unrecognized actions (or in cases where actions have no effect), must return the existing state
@@ -27,3 +27,5 @@ export const reducer: Reducer<SnippetState> = (state: SnippetState = initialStat
       return state
   }
 }
+
+export default reducer
