@@ -16,12 +16,14 @@ export default class ListView extends React.Component<ListViewProps, {}> {
   }
 
   public render() {
+    if (!this.props.snippets) return renderLoading()
     return (
       <Table responsive>
         <thead>
           <tr>
             <th>Title</th>
             <th>Description</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -30,11 +32,18 @@ export default class ListView extends React.Component<ListViewProps, {}> {
               <tr key={key}>
                 <td>{snippet.title}</td>
                 <td>{snippet.description}</td>
+                <td>Actions</td>
               </tr>
             )
           })}
         </tbody>
       </Table>
+    )
+  }
+
+  private renderLoading() {
+    return (
+      <p>Loading...</p>
     )
   }
 

@@ -23,18 +23,11 @@ class Snippets extends React.Component<SnippetsProps, {}> {
   }
 
   public render(): JSX.Element {
-    if (!this.props.snippets) return this.renderLoading()
     return (
       <div>
         <h1>Snippets</h1>
         <SnippetsListView snippets={this.props.snippets} />
       </div>
-    )
-  }
-
-  public renderLoading() {
-    return (
-      <p>Loading...</p>
     )
   }
 }
