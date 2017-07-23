@@ -27,6 +27,7 @@ class Snippets extends React.Component<SnippetsProps, {}> {
     return (
       <div>
         <h1>Snippets</h1>
+        <SnippetsListView snippets={this.props.snippets} />
       </div>
     )
   }
