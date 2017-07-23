@@ -49,7 +49,7 @@ module.exports = {
         test: /\.js$/,
         loader: 'source-map-loader'
       }
-    ],
+    ]
   },
   plugins: [
     new CleanWebpackPlugin([
@@ -59,8 +59,8 @@ module.exports = {
     // Important to keep React file size down
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(env),
-      },
+        'NODE_ENV': JSON.stringify(env)
+      }
     }),
     new CheckerPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -75,6 +75,6 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       phoenix: path.join(__dirname, '/deps/phoenix/priv/static/phoenix.js')
-    },
+    }
   }
 }

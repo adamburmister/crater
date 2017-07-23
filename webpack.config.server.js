@@ -17,7 +17,7 @@ const plugins = {
 module.exports = {
   devtool: 'source-map',
   entry: {
-    component: path.join(__dirname, '/web/static/js/app.tsx')
+    component: path.join(__dirname, '/web/static/js/Root.tsx')
   },
   output: {
     path: path.join(__dirname, '/priv/server/js'),
