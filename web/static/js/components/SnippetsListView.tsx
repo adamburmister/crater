@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { RouteComponentProps } from 'react-router-dom'
-import { Table } from 'reactstrap'
+import { Table, Button } from 'reactstrap'
 
 import { actionCreators } from '../store/snippet/actions'
 import { Snippet, SnippetState, getSnippets } from '../store/snippet/reducer'
@@ -16,14 +16,14 @@ export default class ListView extends React.Component<ListViewProps, {}> {
   }
 
   public render() {
-    if (!this.props.snippets) return renderLoading()
+    if (!this.props.snippets) return this.renderLoading()
     return (
       <Table responsive>
         <thead>
           <tr>
             <th>Title</th>
             <th>Description</th>
-            <th>Actions</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -32,7 +32,12 @@ export default class ListView extends React.Component<ListViewProps, {}> {
               <tr key={key}>
                 <td>{snippet.title}</td>
                 <td>{snippet.description}</td>
-                <td>Actions</td>
+                <td className="text-right">
+                  {/* TODO: Make these buttons actually work. */}
+                  <Button color="secondary" size="sm">Show</Button>{' '}
+                  <Button color="secondary" size="sm">Edit</Button>{' '}
+                  <Button color="danger" size="sm">Delete</Button>
+                </td>
               </tr>
             )
           })}

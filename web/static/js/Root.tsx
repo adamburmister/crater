@@ -8,7 +8,7 @@ export default class Root extends React.Component<{}, {}> {
       <div>
         <Header />
 
-        <Container className="mt-4">
+        <Container fluid className="mt-4">
           <main role="main">
             {this.props.children}
           </main>

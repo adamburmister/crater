@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
-import { Row, Col } from 'reactstrap'
+import { Jumbotron, Button, Row, Col } from 'reactstrap'
 
 import { ApplicationState } from '../store'
 import { fetchSnippets } from '../store/snippet/actions'
@@ -18,8 +18,13 @@ export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <h1>This is Crater.</h1>
-        <p className="lead"><a href="/snippets">Snippets</a></p>
+        <Jumbotron>
+          <h1>This is Crater.</h1>
+          <p className="lead"><em>"It's like 'hot or not' but for code."</em></p>
+          <p className="lead">
+            <Button color="primary" href="/snippets">Browse snippets</Button>
+          </p>
+        </Jumbotron>
 
         <Row className="marketing">
           <Col lg="6">

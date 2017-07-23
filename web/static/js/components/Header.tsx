@@ -19,7 +19,7 @@ export default class Header extends React.Component<{}, HeaderState> {
     return (
       <div>
         <Navbar color="faded" light toggleable>
-          <Container>
+          <Container fluid>
             <NavbarBrand href="/">🚀 crater</NavbarBrand>
           </Container>
         </Navbar>
