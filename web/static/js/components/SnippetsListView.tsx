@@ -33,10 +33,8 @@ export default class ListView extends React.Component<ListViewProps, {}> {
                 <td>{snippet.title}</td>
                 <td>{snippet.description}</td>
                 <td className="text-right">
-                  {/* TODO: Make these buttons actually work. */}
-                  <Button color="secondary" size="sm">Show</Button>{' '}
-                  <Button color="secondary" size="sm">Edit</Button>{' '}
-                  <Button color="danger" size="sm">Delete</Button>
+                  {/* TODO: Make this button actually work. */}
+                  <Button color="secondary" size="sm">Show</Button>
                 </td>
               </tr>
             )

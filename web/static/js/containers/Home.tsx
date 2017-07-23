@@ -7,9 +7,6 @@ import { ApplicationState } from '../store'
 import { fetchSnippets } from '../store/snippet/actions'
 import { SnippetState } from '../store/snippet/reducer'
 
-// TODO: Consider looking into Monaco Editor? Ace is good but both have their
-// own advantages. <https://microsoft.github.io/monaco-editor/>
-
 export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
   constructor(props) {
     super(props)
