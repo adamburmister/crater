@@ -16,12 +16,15 @@ defmodule Crater.Router do
   scope "/", Crater do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
-    resources "/snippets", SnippetController
+    forward "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Crater do
-  #   pipe_through :api
-  # end
+  scope "/api", Crater, as: :api do
+    pipe_through :api
+
+    scope "/v1", Api.V1, as: :v1 do
+      resources "/snippets", SnippetController, only: [:index, :show, :create]
+    end
+  end
 end

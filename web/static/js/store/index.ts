@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-
+import { routerReducer } from 'react-router-redux'
 import snippet, { SnippetState } from './snippet/reducer'
 
 export interface ApplicationState {
@@ -7,6 +7,7 @@ export interface ApplicationState {
   snippet: SnippetState
 }
 
-export const reducers = combineReducers({
+export const reducers = combineReducers<ApplicationState>({
+  routing: routerReducer,
   snippet
 })

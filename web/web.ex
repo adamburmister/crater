@@ -52,8 +52,6 @@ defmodule Crater.Web do
       import Crater.Router.Helpers
       import Crater.ErrorHelpers
       import Crater.Gettext
-
-      import ReactPhoenix.ClientSide
     end
   end
 

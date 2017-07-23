@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose, combineReducers, GenericStoreEnhancer, Store } from 'redux'
 import thunk from 'redux-thunk'
-import { routerReducer, routerMiddleware } from 'react-router-redux'
+import { routerMiddleware } from 'react-router-redux'
 import * as StoreModule from './store'
 import { ApplicationState, reducers } from './store'
 import { History } from 'history'
@@ -20,21 +20,16 @@ export default function configureStore(history: History, initialState?: Applicat
   )(createStore)
 
   // Combine all reducers and instantiate the app-wide store instance
-  const allReducers = buildRootReducer(reducers)
-  const store = createStoreWithMiddleware(allReducers, initialState) as Store<ApplicationState>
+  const store = createStoreWithMiddleware(reducers, initialState) as Store<ApplicationState>
 
   // Enable Webpack hot module replacement for reducers
   if (module.hot) {
     module.hot.accept('./store', () => {
       // tslint:disable-next-line
       const nextRootReducer = require<typeof StoreModule>('./store')
-      store.replaceReducer(buildRootReducer(nextRootReducer.reducers))
+      store.replaceReducer(nextRootReducer.reducers)
     })
   }
 
   return store
-}
-
-function buildRootReducer(allReducers) {
-  return combineReducers<ApplicationState>(Object.assign({}, allReducers, { routing: routerReducer }))
 }
