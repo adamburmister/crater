@@ -1,18 +1,5 @@
 import { Reducer } from 'redux'
-import { FilterChangedAction, SnippetsFetchedAction } from './actionTypes'
-
-export interface SnippetState {
-  filter: string
-  snippets: Snippet[]
-}
-
-export interface Snippet {
-  id: string
-  body: string
-  title: string
-  language: string
-  description?: string
-}
+import { Snippet, SnippetState, FilterChangedAction, SnippetsFetchedAction } from './types'
 
 // Declare a 'discriminated union' type. This guarantees that all references to
 // 'type' properties contain one of the declared type strings (and not any

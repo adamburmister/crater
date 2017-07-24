@@ -4,9 +4,10 @@ import { RouteComponentProps } from 'react-router-dom'
 import { Row, Col } from 'reactstrap'
 
 import SnippetsListView from '../components/SnippetsListView'
-import { actionCreators } from '../store/snippet/actions'
 import { ApplicationState } from '../store'
-import { SnippetState, getSnippets } from '../store/snippet/reducer'
+import { SnippetState } from '../store/snippet/types'
+import { actionCreators } from '../store/snippet/actions'
+import { getSnippets } from '../store/snippet/reducer'
 
 // TODO: Consider looking into Monaco Editor? Ace is good but both have their
 // own advantages. <https://microsoft.github.io/monaco-editor/>

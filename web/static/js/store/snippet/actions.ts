@@ -1,5 +1,4 @@
-import { FilterChangedAction, SnippetsFetchedAction } from './actionTypes'
-import { Snippet } from './reducer'
+import { Snippet, FilterChangedAction, SnippetsFetchedAction } from './types'
 import apiService from '../../services/api'
 
 export const changeFilter = (newFilter) => ({
