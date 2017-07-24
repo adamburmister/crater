@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import snippet, { SnippetState } from './snippet/reducer'
+import snippet from './snippet/reducer'
+import { SnippetState } from './snippet/types'
 
 export interface ApplicationState {
   routing: any,

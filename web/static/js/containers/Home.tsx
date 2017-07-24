@@ -5,7 +5,7 @@ import { Jumbotron, Button, Row, Col } from 'reactstrap'
 
 import { ApplicationState } from '../store'
 import { fetchSnippets } from '../store/snippet/actions'
-import { SnippetState } from '../store/snippet/reducer'
+import { SnippetState } from '../store/snippet/types'
 
 export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
   constructor(props) {
