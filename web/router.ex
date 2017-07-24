@@ -22,7 +22,10 @@ defmodule Crater.Router do
     #
     # I don't even know whether to blame React or Phoenix. Idk. I need to eat.
     get "/", PageController, :index
-    get "/snippets/*path", PageController, :index
+    # get "/snippets/*path", PageController, :index
+
+    # In case of fire, break glass.
+    resources "/snippets", SnippetController
   end
 
   # Other scopes may use custom stacks.
