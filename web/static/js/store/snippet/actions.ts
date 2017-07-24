@@ -1,4 +1,4 @@
-import { Snippet, FilterChangedAction, SnippetsFetchedAction } from './types'
+import { Snippet, FilterChangedAction, SnippetsFetchedAction, SnippetsSelectedAction } from './types'
 import apiService from '../../services/api'
 
 export const changeFilter = (newFilter) => ({
@@ -15,10 +15,12 @@ export const fetchSnippets = () => {
 
 export const selectSnippet = (snippetId) => {
   return (dispatch, getState) => {
-    dispatch({ type: 'snippet.SNIPPETS_FETCHED', snippets: getState.snippets, snippetId } as SnippetsFetchedAction)
+    apiService.getSnippetById(snippetId).then((r) => {
+      dispatch({ type: 'snippet.SNIPPETS_SELECTED', selectedSnippet: r.data } as SnippetsSelectedAction)
+    })
   }
 }
 
 export const actionCreators = {
-  changeFilter, fetchSnippets
+  changeFilter, fetchSnippets, selectSnippet
 }

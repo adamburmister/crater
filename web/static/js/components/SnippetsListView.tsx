@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RouteComponentProps } from 'react-router-dom'
+import { Link, RouteComponentProps } from 'react-router-dom'
 import { Table, Button } from 'reactstrap'
 
 import { actionCreators } from '../store/snippet/actions'
@@ -36,7 +36,11 @@ export default class ListView extends React.Component<ListViewProps, {}> {
                 <td>{snippet.description}</td>
                 <td className="text-right">
                   {/* TODO: Make this button actually work. */}
-                  <Button color="secondary" size="sm">Show</Button>
+                  <Button color="secondary" size="sm"
+                    tag={Link}
+                    to={`/snippets/${this.props.snippets[key].id}`}>
+                    Show
+                  </Button>
                 </td>
               </tr>
             )

@@ -28,5 +28,5 @@ export interface SnippetsFetchedAction {
 
 export interface SnippetsSelectedAction {
   type: 'snippet.SNIPPETS_SELECTED',
-  snippetId: string
+  selectedSnippet: Snippet
 }
