@@ -26,7 +26,7 @@ class ShowSnippet extends React.Component<SnippetsProps, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <h1>Showing snippet {this.props.snippetId}</h1>
+        <h2>Showing snippet {this.props.snippetId}</h2>
       </div>
     )
   }
