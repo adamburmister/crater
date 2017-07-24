@@ -8,8 +8,14 @@ export const changeFilter = (newFilter) => ({
 export const fetchSnippets = () => {
   return (dispatch, getState) => {
     apiService.getAllSnippets().then((r) => {
-      dispatch({ type: 'snippet.SNIPPETS_FETCHED', snippets: r.data })
+      dispatch({ type: 'snippet.SNIPPETS_FETCHED', snippets: r.data } as SnippetsFetchedAction)
     })
+  }
+}
+
+export const selectSnippet = (snippetId) => {
+  return (dispatch, getState) => {
+    dispatch({ type: 'snippet.SNIPPETS_FETCHED', snippets: getState.snippets, snippetId } as SnippetsFetchedAction)
   }
 }
 

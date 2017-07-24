@@ -4,7 +4,6 @@ import { RouteComponentProps } from 'react-router-dom'
 import { Row, Col } from 'reactstrap'
 
 import SnippetsListView from '../components/SnippetsListView'
-import { ApplicationState } from '../store'
 import { SnippetState } from '../store/snippet/types'
 import { actionCreators } from '../store/snippet/actions'
 import { getSnippets } from '../store/snippet/reducer'

@@ -8,5 +8,6 @@ export const routes = (
   <Root>
     <Route exact path="/" component={ Home } />
     <Route path="/snippets" component={ Snippets } />
+    <Route path="/snippets/:id" component={ Snippets } />
   </Root>
 )

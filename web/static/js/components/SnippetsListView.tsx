@@ -3,7 +3,8 @@ import { RouteComponentProps } from 'react-router-dom'
 import { Table, Button } from 'reactstrap'
 
 import { actionCreators } from '../store/snippet/actions'
-import { Snippet, SnippetState, getSnippets } from '../store/snippet/reducer'
+import { Snippet, SnippetState } from '../store/snippet/types'
+import { getSnippets } from '../store/snippet/reducer'
 
 interface ListViewProps {
   snippets: Snippet[]

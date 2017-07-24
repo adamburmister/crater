@@ -24,6 +24,11 @@ export function getSnippets(state) {
   return (snippet as SnippetState).snippets
 }
 
+export function getCurrentSnippet(state) {
+  const { snippet } = state
+  return (snippet as SnippetState).snippetId
+}
+
 export function getCurrentFilter(state) {
   const { snippet } = state
   return (snippet as SnippetState).filter
