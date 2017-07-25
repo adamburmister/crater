@@ -6,7 +6,7 @@ import { Row, Col } from 'reactstrap'
 import SnippetsListView from '../components/SnippetsListView'
 import { SnippetState } from '../store/snippet/types'
 import { actionCreators } from '../store/snippet/actions'
-import { getSnippets } from '../store/snippet/reducer'
+import { getSnippets, getCurrentSnippet } from '../store/snippet/reducer'
 
 // TODO: Consider looking into Monaco Editor? Ace is good but both have their
 // own advantages. <https://microsoft.github.io/monaco-editor/>
@@ -34,9 +34,11 @@ class ShowSnippet extends React.Component<SnippetsProps, {}> {
 
 const mapStateToProps = (state) => {
   const snippets = getSnippets(state)
+  const snippetId = getCurrentSnippet(state)
   return {
     filter: state.filter,
-    snippets
+    snippets,
+    snippetId
   } as SnippetState
 }
 const mapDispatchToProps = (dispatch, ownProps) => {

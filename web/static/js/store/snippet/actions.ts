@@ -15,9 +15,7 @@ export const fetchSnippets = () => {
 
 export const selectSnippet = (snippetId) => {
   return (dispatch, getState) => {
-    apiService.getSnippetById(snippetId).then((r) => {
-      dispatch({ type: 'snippet.SNIPPETS_SELECTED', selectedSnippet: r.data } as SnippetsSelectedAction)
-    })
+    dispatch({ type: 'snippet.SNIPPETS_SELECTED', snippetId } as SnippetsSelectedAction)
   }
 }
 

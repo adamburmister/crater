@@ -4,6 +4,7 @@ export interface SnippetState {
   filter: string
   snippets: Snippet[]
   snippetId?: string
+  selectedSnippet?: Snippet
 }
 
 export interface Snippet {
@@ -28,5 +29,5 @@ export interface SnippetsFetchedAction {
 
 export interface SnippetsSelectedAction {
   type: 'snippet.SNIPPETS_SELECTED',
-  selectedSnippet: Snippet
+  snippetId: string
 }
