@@ -1,14 +1,10 @@
 import { Reducer } from 'redux'
+import { SnippetActions } from './actions'
 import { Snippet, SnippetState, FilterChangedAction, SnippetsFetchedAction, SnippetsSelectedAction } from './types'
-
-// Declare a 'discriminated union' type. This guarantees that all references to
-// 'type' properties contain one of the declared type strings (and not any
-// other arbitrary string).
-type KnownAction = FilterChangedAction | SnippetsFetchedAction | SnippetsSelectedAction
 
 const initialState = { filter: '', snippets: [] }
 
-export default function reducer(state: SnippetState = initialState, action: KnownAction) {
+export default function reducer(state: SnippetState = initialState, action: SnippetActions) {
   switch (action.type) {
     case 'snippet.SNIPPETS_FETCHED':
       return { ...state, snippets: action.snippets }
