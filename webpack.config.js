@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const { CheckerPlugin } = require('awesome-typescript-loader')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const env = process.env.MIX_ENV === 'prod' ? 'production' : 'development'
 
@@ -18,19 +19,19 @@ const plugins = {
 module.exports = {
   devtool: 'source-map',
   entry: [
-    path.join(__dirname, 'web/static/js/app.tsx'),
-    path.join(__dirname, 'web/static/scss/app.scss')
+    path.join(__dirname, 'assets/js/app.tsx'),
+    path.join(__dirname, 'assets/scss/app.scss')
   ],
   output: {
     path: path.join(__dirname, '/priv/static'),
-    filename: 'js/app.bundle.js'
+    filename: 'js/app.js'
   },
   module: {
     loaders: [
       {
         test: /\.tsx?$/,
         loaders: ['awesome-typescript-loader'],
-        include: path.join(__dirname, 'web/static/js'),
+        include: path.join(__dirname, 'assets/js'),
         exclude: /node_modules/
       },
       {
@@ -45,16 +46,21 @@ module.exports = {
         })
       },
       {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader'
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
+          }
+        ]
       }
     ]
   },
   plugins: [
     new CleanWebpackPlugin([
-      path.join(__dirname, 'priv/static/js'),
-      path.join(__dirname, 'priv/static/css')
+      path.join(__dirname, 'priv/static')
     ]),
     // Important to keep React file size down
     new webpack.DefinePlugin({
@@ -64,17 +70,24 @@ module.exports = {
     }),
     new CheckerPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new ExtractTextPlugin('css/app.css')
+    new ExtractTextPlugin({
+      filename: 'css/app.css',
+      allChunks: true
+    }),
+    new CopyWebpackPlugin([
+      { from: path.join(__dirname, 'assets', 'static') }
+    ])
   ].concat(plugins[env]),
   resolve: {
     modules: [
       'node_modules',
-      'web/static/js'
+      'assets/js'
     ],
     // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      phoenix: path.join(__dirname, '/deps/phoenix/priv/static/phoenix.js')
+      phoenix: path.join(__dirname, '/deps/phoenix/priv/static/phoenix.js'),
+      phoenix_html: path.join(__dirname, '/deps/phoenix_html/priv/static/phoenix_html.js')
     }
   }
 }

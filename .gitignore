@@ -22,8 +22,7 @@ erl_crash.dump
 /package-lock.json
 
 # We don't need to commit bundled assets as well.
-/priv/static/css
-/priv/static/js
+/priv/static
 
 # Hey I just wanted to take this moment to say, at the bottom of this gitignore,
 # be nice to someone today. It doesn't matter who, but you gotta be nice to

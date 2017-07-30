@@ -10,10 +10,10 @@ config :crater,
   ecto_repos: [Crater.Repo]
 
 # Configures the endpoint
-config :crater, Crater.Endpoint,
+config :crater, CraterWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "aK8uak/0T7HlMb5XumvSMQw3j/6GWD1Nc613V5dLG9Bz1Tzggvtaadc+Sq3DNdee",
-  render_errors: [view: Crater.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: CraterWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Crater.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
