@@ -1,4 +1,4 @@
-const API_ENDPOINT = '/api/v1'
+const API_ENDPOINT = '/api'
 
 class CraterApiService {
   public async getAllSnippets() {
