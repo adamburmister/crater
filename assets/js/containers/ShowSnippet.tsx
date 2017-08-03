@@ -5,13 +5,13 @@ import { Row, Col } from 'reactstrap'
 
 import SnippetsListView from '../components/SnippetsListView'
 import { SnippetState } from '../store/snippet/types'
-import { actionCreators } from '../store/snippet/actions'
+import * as actions from '../store/snippet/actions'
 import { getSnippets, getCurrentSnippet } from '../store/snippet/reducer'
 
 // TODO: Consider looking into Monaco Editor? Ace is good but both have their
 // own advantages. <https://microsoft.github.io/monaco-editor/>
 
-type SnippetsProps = SnippetState & typeof actionCreators & RouteComponentProps<{}>
+type SnippetsProps = SnippetState & typeof actions & RouteComponentProps<{}>
 
 class ShowSnippet extends React.Component<SnippetsProps, {}> {
   constructor(props) {
@@ -26,7 +26,7 @@ class ShowSnippet extends React.Component<SnippetsProps, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <h2>Showing snippet {this.props.snippetId}</h2>
+        <h2>ShowSnippet {this.props.snippetId}</h2>
       </div>
     )
   }
@@ -41,9 +41,9 @@ const mapStateToProps = (state) => {
     snippetId
   } as SnippetState
 }
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    selectSnippet: (snippetId) => { dispatch(actionCreators.selectSnippet(snippetId)) }
+    selectSnippet: (snippetId) => { dispatch(actions.selectSnippet(snippetId)) }
   }
 }
 

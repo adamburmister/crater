@@ -31,3 +31,9 @@ export interface SnippetsSelectedAction {
   type: 'snippet.SNIPPETS_SELECTED',
   snippetId: string
 }
+
+// Declare a 'discriminated union' type. This guarantees that all references to
+// 'type' properties contain one of the declared type strings (and not any
+// other arbitrary string).
+
+export type SnippetActions = FilterChangedAction | SnippetsFetchedAction | SnippetsSelectedAction

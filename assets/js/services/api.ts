@@ -1,5 +1,9 @@
 const API_ENDPOINT = '/api'
 
+interface ApiResponse {
+  data: any
+}
+
 class CraterApiService {
   public async getAllSnippets() {
     const url = `${API_ENDPOINT}/snippets`
@@ -12,7 +16,7 @@ class CraterApiService {
     if (!response.ok) {
       throw new Error(`CraterApiService getAllSnippets failed, HTTP status ${response.status}`)
     }
-    const data = await response.json()
+    const data = await response.json() as ApiResponse
     return data
   }
 
@@ -27,7 +31,7 @@ class CraterApiService {
     if (!response.ok) {
       throw new Error(`CraterApiService getAllSnippets failed, HTTP status ${response.status}`)
     }
-    const data = await response.json()
+    const data = await response.json() as ApiResponse
     return data
   }
 }

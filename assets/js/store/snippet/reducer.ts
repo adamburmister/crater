@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import { SnippetActions } from './actions'
+import { SnippetActions } from './types'
 import { Snippet, SnippetState, FilterChangedAction, SnippetsFetchedAction, SnippetsSelectedAction } from './types'
 
 const initialState = { filter: '', snippets: [] }

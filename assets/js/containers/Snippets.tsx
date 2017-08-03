@@ -1,17 +1,19 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { RouteComponentProps } from 'react-router-dom'
+import { Route, RouteComponentProps } from 'react-router-dom'
 import { Row, Col } from 'reactstrap'
 
 import SnippetsListView from '../components/SnippetsListView'
 import { SnippetState } from '../store/snippet/types'
-import { actionCreators } from '../store/snippet/actions'
+import * as actions from '../store/snippet/actions'
 import { getSnippets } from '../store/snippet/reducer'
+
+import ShowSnippet from './ShowSnippet'
 
 // TODO: Consider looking into Monaco Editor? Ace is good but both have their
 // own advantages. <https://microsoft.github.io/monaco-editor/>
 
-type SnippetsProps = SnippetState & typeof actionCreators & RouteComponentProps<{}>
+type SnippetsProps = SnippetState & typeof actions & RouteComponentProps<{}>
 
 class Snippets extends React.Component<SnippetsProps, {}> {
   constructor(props) {
@@ -26,7 +28,10 @@ class Snippets extends React.Component<SnippetsProps, {}> {
     return (
       <div>
         <h1>Snippets</h1>
-        <SnippetsListView snippets={this.props.snippets} />
+
+        {/* To be honest, I still have that you now have to do this crap in react-router... */}
+        <Route exact path={this.props.match.path} component={SnippetsListView} />
+        <Route path="/:id" component={ShowSnippet} />
       </div>
     )
   }
@@ -41,8 +46,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    changeFilter: () => { dispatch(actionCreators.changeFilter(ownProps.filter)) },
-    fetchSnippets: () => { dispatch(actionCreators.fetchSnippets()) }
+    changeFilter: () => { dispatch(actions.changeFilter(ownProps.filter)) },
+    fetchSnippets: () => { dispatch(actions.fetchSnippets()) }
   }
 }
 
