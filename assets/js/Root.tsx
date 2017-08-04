@@ -1,12 +1,15 @@
 import * as React from 'react'
-import { Container } from 'reactstrap'
-import Header from './components/Header'
+import { Container, Navbar, NavbarBrand } from 'reactstrap'
 
 export default class Root extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
-        <Header />
+        <Navbar color="faded" light toggleable>
+          <Container fluid>
+            <NavbarBrand href="/">🚀 crater</NavbarBrand>
+          </Container>
+        </Navbar>
 
         <Container fluid className="mt-4">
           <main role="main">
