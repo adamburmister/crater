@@ -1,6 +1,6 @@
 import { Reducer } from 'redux'
 import { ApplicationState } from '../'
-import { Snippet, SnippetState, SnippetActions, FilterChangedAction, SnippetsFetchedAction, SnippetsSelectedAction } from './types'
+import { Snippet, SnippetState, SnippetActions } from './types'
 
 const initialState = { filter: '', snippets: [], selectedSnippet: {} }
 
@@ -10,6 +10,8 @@ export default function reducer(state: SnippetState, action: SnippetActions) {
       return { ...state, snippets: action.snippets }
     case 'snippet/SNIPPETS_SELECTED':
       return { ...state, selectedSnippet: action.selectedSnippet }
+    case 'snippet/SELECTED_SNIPPET_CLEARED':
+      return { ...state, selectedSnippet: {} }
     default:
       // The following line guarantees that every action in the KnownAction union has been covered by a case above
       const exhaustiveCheck: never = action
