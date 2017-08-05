@@ -24,16 +24,16 @@ export interface FilterChangedAction {
 
 export interface SnippetsFetchedAction {
   type: 'snippet/SNIPPETS_FETCHED',
-  snippets: Snippet
+  snippets: Snippet[]
 }
 
 export interface SnippetsSelectedAction {
   type: 'snippet/SNIPPETS_SELECTED',
-  snippetId: string
+  selectedSnippet: Snippet
 }
 
 // Declare a 'discriminated union' type. This guarantees that all references to
 // 'type' properties contain one of the declared type strings (and not any
 // other arbitrary string).
 
-export type SnippetActions = FilterChangedAction | SnippetsFetchedAction | SnippetsSelectedAction
+export type SnippetActions = SnippetsFetchedAction | SnippetsSelectedAction
