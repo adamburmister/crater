@@ -2,8 +2,8 @@
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
-import { Row, Col } from 'reactstrap'
+import { Link, RouteComponentProps } from 'react-router-dom'
+import { Container, Row, Col, Breadcrumb, BreadcrumbItem, Badge } from 'reactstrap'
 import AceEditor from 'react-ace'
 
 import { ReduxDispatcher, ApplicationState } from '../store'
@@ -50,8 +50,16 @@ class SnippetComponent extends React.Component<ComponentProps, {}> {
     const { selectedSnippet } = snippet
     if (!selectedSnippet) return this.renderLoading()
     return (
-      <div>
-        <h2>{selectedSnippet.title}</h2>
+      <Container>
+        <Breadcrumb>
+          <BreadcrumbItem><Link to="/">Home</Link></BreadcrumbItem>
+          <BreadcrumbItem><Link to="/snippets">Snippets</Link></BreadcrumbItem>
+          <BreadcrumbItem active>{selectedSnippet.title}</BreadcrumbItem>
+        </Breadcrumb>
+
+        {/* TODO: Placeholder rating value. */}
+        {/* TODO: Design still pretty much in its early stage. Definitely subject to change. */}
+        <h2>{selectedSnippet.title} <Badge color="success">9.4</Badge></h2>
         {selectedSnippet.description
           ? <p>{selectedSnippet.description}</p>
           : ''}
@@ -68,7 +76,7 @@ class SnippetComponent extends React.Component<ComponentProps, {}> {
             editorProps={{ $blockScrolling: true }}
           />
         </div>
-      </div>
+      </Container>
     )
   }
 

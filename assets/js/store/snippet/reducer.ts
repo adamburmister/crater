@@ -2,7 +2,7 @@ import { Reducer } from 'redux'
 import { ApplicationState } from '../'
 import { Snippet, SnippetState, SnippetActions, FilterChangedAction, SnippetsFetchedAction, SnippetsSelectedAction } from './types'
 
-const initialState = { filter: '', snippets: [] }
+const initialState = { filter: '', snippets: [], selectedSnippet: {} }
 
 export default function reducer(state: SnippetState, action: SnippetActions) {
   switch (action.type) {

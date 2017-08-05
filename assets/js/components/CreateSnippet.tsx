@@ -2,8 +2,8 @@
 
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
-import { Row, Col, Form, FormGroup, Button, Label, Input } from 'reactstrap'
+import { Link, RouteComponentProps } from 'react-router-dom'
+import { Container, Row, Col, Breadcrumb, BreadcrumbItem, Form, FormGroup, Button, Label, Input } from 'reactstrap'
 import AceEditor from 'react-ace'
 
 import 'brace/ext/language_tools'
@@ -41,10 +41,25 @@ class CreateSnippetComponent extends React.Component<{} & EditorProps, EditorRea
 
   public render(): JSX.Element {
     return (
-      <div>
+      <Container>
+        <Breadcrumb>
+          <BreadcrumbItem><Link to="/">Home</Link></BreadcrumbItem>
+          <BreadcrumbItem><Link to="/snippets">Snippets</Link></BreadcrumbItem>
+          <BreadcrumbItem active>New Snippet</BreadcrumbItem>
+        </Breadcrumb>
         <h1>New Snippet</h1>
-        <Form>
-          <Row className="mt-3">
+        <Form className="mt-3">
+          <Row>
+            <Col lg="12">
+              <FormGroup>
+                <Label htmlFor="title">
+                  Title
+                </Label>
+                <Input type="text" name="title" placeholder="Enter a title..." />
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row>
             <Col lg="6">
               <FormGroup>
                 <Label htmlFor="mode">
@@ -83,9 +98,9 @@ class CreateSnippetComponent extends React.Component<{} & EditorProps, EditorRea
               />
             </Col>
           </Row>
-          <Button color="primary" type="submit">Submit</Button>
+          <Button color="primary" type="submit" block>Submit</Button>
         </Form>
-      </div>
+      </Container>
     )
   }
 

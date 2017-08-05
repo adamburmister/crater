@@ -4,7 +4,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link, RouteComponentProps } from 'react-router-dom'
 import { Row, Col, Card, Button, CardImg, CardTitle, CardText, CardDeck,
- CardSubtitle, CardBlock } from 'reactstrap'
+ CardSubtitle, CardBlock, Badge } from 'reactstrap'
 import AceEditor from 'react-ace'
 
 import { ReduxDispatcher, ApplicationState } from '../store'
@@ -30,11 +30,13 @@ class SnippetsComponent extends React.Component<SnippetsProps, {}> {
   private static renderSnippetsDeck(snippets: Snippet[]) {
     return (
       <CardDeck className="mt-3">
+        {/* TODO: Placeholder rating value. */}
+        {/* TODO: Design still pretty much in its early stage. Definitely subject to change. */}
         {snippets.map((snippet, key) => {
           return (
             <Card key={snippet.id}>
               <CardBlock>
-                <CardTitle className="mb-0">{snippet.title}</CardTitle>
+                <CardTitle className="mb-0">{snippet.title} <Badge color="success">9.4</Badge></CardTitle>
               </CardBlock>
               <CardImg tag="div">
                 <AceEditor
