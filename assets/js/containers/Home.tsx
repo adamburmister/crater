@@ -1,9 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { RouteComponentProps } from 'react-router-dom'
+import { Link, RouteComponentProps } from 'react-router-dom'
 import { Jumbotron, Button, Row, Col } from 'reactstrap'
-
-import SnippetEditor from '../components/SnippetEditor'
 
 import { ApplicationState } from '../store'
 import { fetchSnippets } from '../store/snippet/actions'
@@ -21,19 +19,14 @@ export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
           <h1>This is Crater.</h1>
           <p className="lead"><em>"It's like 'hot or not' but for code."</em></p>
           <p className="lead">
-            <Button color="primary" href="#create-snippet">New snippet</Button>{' '}
-            <Button color="secondary" href="/snippets">Browse snippets</Button>
+            <Button color="primary" tag={Link} to="/new/snippet">New snippet</Button>{' '}
+            <Button color="secondary" href="#browse-snippets">Browse snippets</Button>
           </p>
         </Jumbotron>
 
-        <Row id="create-snippet">
+        <Row id="browse-snippets">
           <Col lg="12">
-            <h2>Create snippet</h2>
-            <div className="mt-3">
-              {/* TODO: This bring up a type error in TypeScript, however
-                Webpack still compiles. Haven't been able to figure out why. */}
-              <SnippetEditor />
-            </div>
+            <h2>Browse snippets</h2>
           </Col>
         </Row>
       </div>

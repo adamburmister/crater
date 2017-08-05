@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { Container, Navbar, NavbarBrand } from 'reactstrap'
 
 export default class Root extends React.Component<{}, {}> {
@@ -7,7 +8,7 @@ export default class Root extends React.Component<{}, {}> {
       <div>
         <Navbar color="faded" light toggleable>
           <Container fluid>
-            <NavbarBrand href="/">🚀 crater</NavbarBrand>
+            <NavbarBrand tag={Link} to="/">🚀 crater</NavbarBrand>
           </Container>
         </Navbar>
 
