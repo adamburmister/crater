@@ -13,48 +13,13 @@ import { ReduxDispatcher, ApplicationState } from '../store'
 import { EditorState } from '../store/editor/types'
 import * as actions from '../store/editor/actions'
 
-// List of supported languages in ace-editor
-const languages = [
-  'javascript',
-  'jsx',
-  'java',
-  'python',
-  'xml',
-  'ruby',
-  'sass',
-  'markdown',
-  'mysql',
-  'json',
-  'html',
-  'handlebars',
-  'golang',
-  'csharp',
-  'elixir',
-  'typescript',
-  'css'
-]
-
-// List of supported themes in ace-editor
-const themes = [
-  'monokai',
-  'github',
-  'tomorrow',
-  'kuroir',
-  'twilight',
-  'xcode',
-  'textmate',
-  'solarized_dark',
-  'solarized_light',
-  'terminal',
-]
+import { languages, themes } from '../utils/ace-editor'
 
 // Iterate through each language/theme and import them to the component.
-
 languages.forEach((lang) => {
   require(`brace/mode/${lang}`)
   require(`brace/snippets/${lang}`)
 })
-
 themes.forEach((theme) => {
   require(`brace/theme/${theme}`)
 })
@@ -103,6 +68,7 @@ class CreateSnippetComponent extends React.Component<{} & EditorProps, EditorRea
           </Row>
         </Form>
         <Form onSubmit={this.onSubmit.bind(this)}>
+          {/* TODO: Handle snippet submission. */}
           <Row className="mt-2 mb-3">
             <Col lg="12">
               <AceEditor
@@ -124,6 +90,7 @@ class CreateSnippetComponent extends React.Component<{} & EditorProps, EditorRea
   }
 
   private onChange(newValue) {
+    console.log(newValue)
     this.setState({
       value: newValue
     })
@@ -138,7 +105,8 @@ class CreateSnippetComponent extends React.Component<{} & EditorProps, EditorRea
   }
 
   private onSubmit(e) {
-    console.log(e)
+    e.preventDefault()
+    console.log(this.state.value)
   }
 }
 

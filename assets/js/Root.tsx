@@ -12,7 +12,7 @@ export default class Root extends React.Component<{}, {}> {
           </Container>
         </Navbar>
 
-        <Container className="mt-4">
+        <Container fluid className="mt-4">
           <main role="main">
             {this.props.children}
           </main>

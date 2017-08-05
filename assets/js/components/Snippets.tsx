@@ -1,12 +1,24 @@
+/* tslint:disable:no-require-imports */
+
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { Link, RouteComponentProps } from 'react-router-dom'
-import { Table, Row, Col, Button } from 'reactstrap'
+import { Row, Col, Card, Button, CardImg, CardTitle, CardText, CardDeck,
+ CardSubtitle, CardBlock } from 'reactstrap'
+import AceEditor from 'react-ace'
 
 import { ReduxDispatcher, ApplicationState } from '../store'
 import { SnippetState, Snippet } from '../store/snippet/types'
 import * as actions from '../store/snippet/actions'
 import { getSnippets } from '../store/snippet/reducer'
+
+import { languages } from '../utils/ace-editor'
+
+// Iterate through each language/theme and import them to the component.
+languages.forEach((lang) => {
+  require(`brace/mode/${lang}`)
+  require(`brace/snippets/${lang}`)
+})
 
 type SnippetsProps = SnippetState & ReduxDispatcher & RouteComponentProps<{}>
 
@@ -15,35 +27,45 @@ class SnippetsComponent extends React.Component<SnippetsProps, {}> {
     super(props)
   }
 
-  private static renderSnippetsTable(snippets: Snippet[]) {
+  private static renderSnippetsDeck(snippets: Snippet[]) {
     return (
-      <Table responsive>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {snippets.map((snippet, key) => {
-            return (
-              <tr key={key}>
-                <td>{snippet.title}</td>
-                <td>{snippet.description}</td>
-                <td className="text-right">
-                  {/* TODO: Make this button actually work. */}
-                  <Button color="secondary" size="sm"
-                    tag={Link}
-                    to={`/snippets/${snippet.id}`}>
-                    Show
-                  </Button>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </Table>
+      <CardDeck className="mt-3">
+        {snippets.map((snippet, key) => {
+          return (
+            <Card key={snippet.id}>
+              <CardBlock>
+                <CardTitle className="mb-0">{snippet.title}</CardTitle>
+              </CardBlock>
+              <CardImg tag="div">
+                <AceEditor
+                  mode={snippet.language}
+                  theme={'github'}
+                  name="snippet-list"
+                  width="100%"
+                  height="5rem"
+                  readOnly
+                  value={snippet.body.length > 100
+                    ? `${snippet.body.substring(0, 100)}...`
+                    : snippet.body}
+                  fontSize={14}
+                  editorProps={{ $blockScrolling: true }}
+                  onLoad={(editor: any) => {
+                    editor.getSession().setUseWorker(false)
+                  }}
+                />
+              </CardImg>
+              <CardBlock>
+                <CardText>{snippet.description}</CardText>
+                <Button color="secondary"
+                  tag={Link}
+                  to={`/snippets/${snippet.id}`}>
+                  Show
+                </Button>
+              </CardBlock>
+            </Card>
+          )
+        })}
+      </CardDeck>
     )
   }
 
@@ -56,7 +78,7 @@ class SnippetsComponent extends React.Component<SnippetsProps, {}> {
     return (
       <div>
         <h1>Snippets</h1>
-        {SnippetsComponent.renderSnippetsTable(this.props.snippets)}
+        {SnippetsComponent.renderSnippetsDeck(this.props.snippets)}
       </div>
     )
   }
@@ -68,6 +90,6 @@ class SnippetsComponent extends React.Component<SnippetsProps, {}> {
   }
 }
 
-const mapStateToProps = (state: ApplicationState) => state.snippets
+const mapStateToProps = (state: ApplicationState) => state.snippet
 
 export default connect(mapStateToProps)(SnippetsComponent) as typeof SnippetsComponent

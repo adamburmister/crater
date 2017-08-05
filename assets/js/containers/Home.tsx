@@ -20,15 +20,9 @@ export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
           <p className="lead"><em>"It's like 'hot or not' but for code."</em></p>
           <p className="lead">
             <Button color="primary" tag={Link} to="/new/snippet">New snippet</Button>{' '}
-            <Button color="secondary" href="#browse-snippets">Browse snippets</Button>
+            <Button color="secondary" tag={Link} to="/snippets">Browse snippets</Button>
           </p>
         </Jumbotron>
-
-        <Row id="browse-snippets">
-          <Col lg="12">
-            <h2>Browse snippets</h2>
-          </Col>
-        </Row>
       </div>
     )
   }
