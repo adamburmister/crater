@@ -16,6 +16,13 @@ export default class Root extends React.Component<{}, {}> {
             {this.props.children}
           </main>
         </Container>
+
+        <footer className="mt-5">
+          <hr/>
+          <Container className="my-3">
+            &copy; 2017 the blvd group
+          </Container>
+        </footer>
       </div>
     )
   }
