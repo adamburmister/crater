@@ -10,7 +10,7 @@ import { EditorState } from './editor/types'
 export interface ApplicationState {
   routing: any,
   editor: EditorState,
-  snippet: SnippetState
+  snippets: SnippetState
 }
 
 export interface ReduxDispatcher {

@@ -6,9 +6,9 @@ const initialState = { filter: '', snippets: [] }
 
 export default function reducer(state: SnippetState = initialState, action: SnippetActions) {
   switch (action.type) {
-    case 'snippet.SNIPPETS_FETCHED':
+    case 'snippet/SNIPPETS_FETCHED':
       return { ...state, snippets: action.snippets }
-    case 'snippet.SNIPPETS_SELECTED':
+    case 'snippet/SNIPPETS_SELECTED':
       return { ...state, snippetId: action.snippetId }
     default:
       // For unrecognized actions (or in cases where actions have no effect), must return the existing state

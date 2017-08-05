@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link, RouteComponentProps } from 'react-router-dom'
 import { Table, Row, Col, Button } from 'reactstrap'
 
-import { ReduxDispatcher } from '../store'
+import { ReduxDispatcher, ApplicationState } from '../store'
 import { SnippetState, Snippet } from '../store/snippet/types'
 import * as actions from '../store/snippet/actions'
 import { getSnippets } from '../store/snippet/reducer'
@@ -68,12 +68,6 @@ class SnippetsComponent extends React.Component<SnippetsProps, {}> {
   }
 }
 
-const mapStateToProps = (state) => {
-  const snippets = getSnippets(state)
-  return {
-    filter: state.filter,
-    snippets
-  } as SnippetState
-}
+const mapStateToProps = (state: ApplicationState) => state.snippets
 
 export default connect(mapStateToProps)(SnippetsComponent) as typeof SnippetsComponent

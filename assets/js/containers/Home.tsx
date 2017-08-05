@@ -28,8 +28,10 @@ export default class Home extends React.Component<RouteComponentProps<{}>, {}> {
 
         <Row id="create-snippet">
           <Col lg="12">
-            <h2>Create a snippet</h2>
+            <h2>Create snippet</h2>
             <div className="mt-3">
+              {/* TODO: This bring up a type error in TypeScript, however
+                Webpack still compiles. Haven't been able to figure out why. */}
               <SnippetEditor />
             </div>
           </Col>

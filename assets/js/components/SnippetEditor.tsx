@@ -9,7 +9,7 @@ import AceEditor from 'react-ace'
 import 'brace/ext/language_tools'
 import 'brace/ext/searchbox'
 
-import { ReduxDispatcher } from '../store'
+import { ReduxDispatcher, ApplicationState } from '../store'
 import { EditorState } from '../store/editor/types'
 import * as actions from '../store/editor/actions'
 
@@ -59,14 +59,14 @@ themes.forEach((theme) => {
   require(`brace/theme/${theme}`)
 })
 
-type EditorProps = EditorState & ReduxDispatcher & {}
+type EditorProps = EditorState & ReduxDispatcher
 
 // We don't use Redux state for the editor content.
 interface EditorReactState {
   value: string
 }
 
-class SnippetEditorComponent extends React.Component<EditorProps, EditorReactState> {
+class SnippetEditorComponent extends React.Component<{} & EditorProps, EditorReactState> {
   constructor(props) {
     super(props)
     this.state = {
@@ -129,6 +129,6 @@ class SnippetEditorComponent extends React.Component<EditorProps, EditorReactSta
   }
 }
 
-const mapStateToProps = (state) => state.editor as EditorState
+const mapStateToProps = (state: ApplicationState) => state.editor
 
 export default connect(mapStateToProps)(SnippetEditorComponent) as typeof SnippetEditorComponent

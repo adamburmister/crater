@@ -19,16 +19,16 @@ export interface Snippet {
 // reducer name.
 
 export interface FilterChangedAction {
-  type: 'snippet.FILTER_CHANGED'
+  type: 'snippet/FILTER_CHANGED'
 }
 
 export interface SnippetsFetchedAction {
-  type: 'snippet.SNIPPETS_FETCHED',
+  type: 'snippet/SNIPPETS_FETCHED',
   snippets: Snippet
 }
 
 export interface SnippetsSelectedAction {
-  type: 'snippet.SNIPPETS_SELECTED',
+  type: 'snippet/SNIPPETS_SELECTED',
   snippetId: string
 }
 
