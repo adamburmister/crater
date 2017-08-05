@@ -40,13 +40,13 @@ class SnippetComponent extends React.Component<ComponentProps, {}> {
     super(props)
   }
 
-  public componentWillMount() {
-    this.props.dispatch(snippetActions.clearSelectedSnippet())
-  }
-
   public componentDidMount() {
     const { match } = this.props
     this.props.dispatch(snippetActions.getSnippetById(match.params.id))
+  }
+
+  public componentWillUnmount() {
+    this.props.dispatch(snippetActions.clearSelectedSnippet())
   }
 
   public render(): JSX.Element {
