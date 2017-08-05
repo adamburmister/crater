@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Route } from 'react-router-dom'
+
 import Root from './Root'
 import Home from './containers/Home'
 import SnippetsContainer from './containers/Snippets'
