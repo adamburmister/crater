@@ -6,7 +6,7 @@ use Mix.Config
 
 # You can generate a new secret by running:
 #
-#     mix phoenix.gen.secret
+#     mix phx.gen.secret
 config :crater, CraterWeb.Endpoint,
   http: [port: 80],
   secret_key_base: "A LONG SECRET"
