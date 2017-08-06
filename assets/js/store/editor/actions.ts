@@ -1,4 +1,4 @@
-import { ThemeChangedAction, ModeChangedAction, FontSizeChangedAction } from './types'
+import { ThemeChangedAction, ModeChangedAction, FontSizeChangedAction, EditorStateResetAction } from './types'
 
 export const setMode = (mode) => ({
   type: 'editor/MODE_CHANGED', mode
@@ -11,3 +11,7 @@ export const setTheme = (theme) => ({
 export const setFontSize = (fontSize) => ({
   type: 'editor/FONT_SIZE_CHANGED', fontSize
 } as FontSizeChangedAction)
+
+export const resetEditorState = () => ({
+  type: 'editor/EDITOR_STATE_RESET'
+} as EditorStateResetAction)

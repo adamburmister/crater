@@ -25,4 +25,8 @@ export interface FontSizeChangedAction {
   fontSize: number
 }
 
-export type EditorActions = ThemeChangedAction | ModeChangedAction | FontSizeChangedAction
+export interface EditorStateResetAction {
+  type: 'editor/EDITOR_STATE_RESET'
+}
+
+export type EditorActions = ThemeChangedAction | ModeChangedAction | FontSizeChangedAction | EditorStateResetAction

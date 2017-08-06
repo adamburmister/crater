@@ -1,10 +1,10 @@
 import { Reducer } from 'redux'
 import { ApplicationState } from '../'
-import { Snippet, SnippetState, SnippetActions } from './types'
+import { Snippet, SnippetState, SnippetActions as KnownAction } from './types'
 
 const initialState = { filter: '', snippets: [], selectedSnippet: {} }
 
-export default function reducer(state: SnippetState, action: SnippetActions) {
+export default function reducer(state: SnippetState, action: KnownAction) {
   switch (action.type) {
     case 'snippet/SNIPPETS_FETCHED':
       return { ...state, snippets: action.snippets }

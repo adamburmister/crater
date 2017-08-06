@@ -39,6 +39,10 @@ class CreateSnippetComponent extends React.Component<{} & EditorProps, EditorRea
     }
   }
 
+  public componentWillUnmount() {
+    this.props.dispatch(actions.resetEditorState())
+  }
+
   public render(): JSX.Element {
     return (
       <Container>
@@ -48,7 +52,7 @@ class CreateSnippetComponent extends React.Component<{} & EditorProps, EditorRea
           <BreadcrumbItem active>New Snippet</BreadcrumbItem>
         </Breadcrumb>
         <h1>New Snippet</h1>
-        <Form className="mt-3">
+        <Form className="mt-3" onSubmit={this.onSubmit.bind(this)}>
           <Row>
             <Col lg="12">
               <FormGroup>
@@ -81,8 +85,6 @@ class CreateSnippetComponent extends React.Component<{} & EditorProps, EditorRea
               </FormGroup>
             </Col>
           </Row>
-        </Form>
-        <Form onSubmit={this.onSubmit.bind(this)}>
           {/* TODO: Handle snippet submission. */}
           <Row className="mt-2 mb-3">
             <Col lg="12">
