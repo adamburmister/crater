@@ -15,7 +15,7 @@ const initialState = {
   showLineNumbers: true,
 }
 
-export default function reducer(state: EditorState = initialState, action: KnownAction) {
+const reducer: Reducer<EditorState> = (state: EditorState = initialState, action: KnownAction) => {
   switch (action.type) {
     case 'editor/THEME_CHANGED':
       return { ...state, theme: action.theme }
@@ -33,3 +33,5 @@ export default function reducer(state: EditorState = initialState, action: Known
   // (or default initial state if none was supplied)
   return state || initialState
 }
+
+export default reducer
