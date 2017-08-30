@@ -3,7 +3,6 @@ defmodule Crater.Repo.Migrations.CreateSnippets do
 
   def change do
     create table(:snippets) do
-      add :id, :uuid, primary_key: true
       add :title, :string
       add :language, :string
       add :body, :text

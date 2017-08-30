@@ -1,0 +1,10 @@
+{application,crater,
+             [{description,"crater"},
+              {modules,['Elixir.Crater','Elixir.Crater.Application',
+                        'Elixir.CraterWeb']},
+              {registered,[]},
+              {vsn,"0.0.1"},
+              {mod,{'Elixir.Crater.Application',[]}},
+              {applications,[kernel,stdlib,elixir,phoenix,phoenix_pubsub,
+                             phoenix_html,cowboy,logger,gettext,phoenix_ecto,
+                             postgrex,ex_debug_toolbar]}]}.

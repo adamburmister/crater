@@ -9,6 +9,10 @@ use Mix.Config
 config :crater,
   ecto_repos: [Crater.Repo]
 
+# Configure email sending via Bamboo
+config :crater, Crater.Mailer,
+  adapter: Bamboo.LocalAdapter
+
 # Configures the endpoint
 config :crater, CraterWeb.Endpoint,
   url: [host: "localhost"],
