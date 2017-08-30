@@ -1,5 +1,6 @@
 defmodule CraterWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :crater
+  use ExDebugToolbar.Phoenix
 
   socket "/socket", CraterWeb.UserSocket
 

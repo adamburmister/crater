@@ -19,7 +19,7 @@ defmodule Crater.Mixfile do
   def application do
     [mod: {Crater.Application, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :ex_debug_toolbar]]
   end
 
   # Specifies which paths to compile per environment.
@@ -38,7 +38,8 @@ defmodule Crater.Mixfile do
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:ex_debug_toolbar, "~> 0.3.10"}
     ]
   end
 

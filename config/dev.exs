@@ -1,5 +1,8 @@
 use Mix.Config
 
+config :ex_debug_toolbar,
+  enable: true
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
@@ -7,6 +10,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :crater, CraterWeb.Endpoint,
+  instrumenters: [ExDebugToolbar.Collector.InstrumentationCollector],
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -19,6 +23,9 @@ config :crater, CraterWeb.Endpoint,
     ]}
   ]
 
+config :phoenix, :template_engines,
+  eex: ExDebugToolbar.Template.EExEngine,
+  exs: ExDebugToolbar.Template.ExsEngine
 
 # Watch static and templates for browser reloading.
 config :crater, CraterWeb.Endpoint,
@@ -41,6 +48,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :crater, Crater.Repo,
   adapter: Ecto.Adapters.Postgres,
+  loggers: [ExDebugToolbar.Collector.EctoCollector, Ecto.LogEntry],
   username: "postgres",
   password: "postgres",
   database: "crater_dev",
