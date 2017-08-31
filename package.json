@@ -68,14 +68,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blvdgroup/crater.git"
+    "url": "git+https://github.com/adamburmister/crater.git"
   },
   "author": "blvd",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/blvdgroup/crater/issues"
+    "url": "https://github.com/adamburmister/crater/issues"
   },
-  "homepage": "https://github.com/blvdgroup/crater#readme",
+  "homepage": "https://github.com/adamburmister/crater#readme",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-blvd"
